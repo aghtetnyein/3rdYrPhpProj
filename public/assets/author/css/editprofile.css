@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Satisfy&display=swap');
+
+/*@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Lily+Script+One|Pacifico|Satisfy&display=swap');*/
+
+
+
+body{
+  	font-family: 'Open Sans', sans-serif;
+  	margin:0;
+  	text-align: center;
+  	background: #FBFBF6;
+}
+
+.brand{
+	font-family: Satisfy;
+	font-size: 28px;
+	font-weight: bold;
+	padding-left: 80px;
+}
+
+.right{
+	padding-right: 80px;
+}
+
+
+a{
+	color:black;
+	text-decoration: none;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: block;
+  background-color:white;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25), 0 3px 5px 0 rgba(0, 0, 0, 0.20);
+  transition: top 0.3s;
+}
+
+#navbar a {
+  font-weight: bold;
+  float:  right;
+  display: block;
+  color: #424242;
+  text-align: center;
+  padding: 18px 18px;
+  text-decoration: none;
+  font-size: 19px;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+#navbar a:hover {
+  color:  #FFA000;
+}
+#navbar a.active {
+  color:  #FFA000;
+}
+
+.pimage{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 10px;
+}
+
+
+.content{
+  font-size: 15px;
+  border: solid 1px #E0E0E0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50%;
+  background-color: white;
+  margin-top: 100px;
+  border-radius: 7px;
+  
+}
+
+.topsection{
+  width: 100%;
+  margin-top: 30px;
+}
+
+
+.field{
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.field .fname{
+  text-align: left;
+  margin-left: 120px;
+  margin-bottom: 10px;
+}
+
+.field input{
+  margin-top: 0;
+  border:solid 1px #E0E0E0;
+  width:400px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+
+.button
+{
+  color:white;
+  background:  #FFA000;
+  border: none;
+  width: 100px;
+  height: 40px;
+  border-radius: 7px;
+  font-weight: bold;
+  -webkit-transition: .2s;
+  transition: .2s;
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+}
+
+.button:hover{
+  background-color: #FFB300;
+} 
+
+
+a{
+  text-decoration: none;
+}
+
+input:focus{
+  outline: none;
+}
+
+.choosefile{
+  text-align: left;
+  margin-left: 130px;
+  margin-top: 30px;
+}
+
+@media only screen and (min-width: 600px) and (max-width:900px) {
+
+    .content{
+      width: 100%;
+      margin-top: 100px;
+      border: none;
+    }
+
+    .field{
+      text-align: center;
+    }
+
+    .input{
+      margin-left: 0px;
+      width: 300px;
+    }
+
+    .field .fname{
+      margin-left: 180px;
+    }
+
+    .choosefile{
+      text-align: left;
+      margin-left: 185px;
+      margin-top: 30px;
+    }
+}
+
+
+@media only screen and (max-width:426px) {
+
+  .brand{
+    font-size: 24px;
+    padding-left: 0;
+  }
+
+  .right{
+    padding-right: 0;
+  }
+
+  .field .fname{
+    margin-left: 0;
+  }
+
+  .choosefile{
+    margin-left: 10px;
+  }
+
+}
