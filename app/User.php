@@ -52,6 +52,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     }
 
+    public function shoppingLists(){
+        return $this->hasMany('App\ShoppingList');
+    }
+
     public function role()
     {
         return $this->belongsTo('App\Role');
@@ -70,5 +74,15 @@ class User extends Authenticatable
     public function follows()
     {
         return $this->hasMany('App\Follow');
+    }
+
+    public function like()
+    {
+        return $this->hasMany('App\Like');
+    }
+
+    public function saves()
+    {
+        return $this->hasMany('App\Save');
     }
 }

@@ -9,7 +9,7 @@
 
         <div class="row mt-3">
           <div class="d-flex flex-row">
-            <div><h4 class="about">6 Posts</h4></div>
+            <div><h4 class="about">{{ recipes }} Recipes</h4></div>
             <div><h4 class="about">{{ followerCount }} Followers</h4></div>
             <div><h4 class="about">{{ following }} Following</h4></div>
           </div>
@@ -23,16 +23,21 @@
         data(){
             return {
                 followerCount:0,
-                followOrUn:'Follow'
+                followOrUn: 'follow',
             }
         },
         
         props:[
-            'name', 'profileId', 'userId', 'followers', 'following'
+            'name', 'profileId', 'userId', 'followers', 'following', 'followOrNot', 'recipes'
         ],
 
         created(){
-            this.followerCount = this.followers
+            this.followerCount = this.followers;
+            if (this.followOrNot <= 0) {
+                this.followOrUn = 'Follow';
+            }else{
+                this.followOrUn = 'Unfollow';
+            }
         },
 
         mounted(){
@@ -51,7 +56,7 @@
                                 this.followOrUn = 'Follow';
                             }if(response.data == 'followed'){
                                 this.followerCount++;
-                                this.followOrUn = 'Unfollow';
+                                this.followOrUn = 'UnFollow';
                             }
                             console.log(response);
                         })
@@ -63,6 +68,5 @@
                 }
             }
         },
-
     }
 </script>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRecipesTable extends Migration
+class CreateShoppingListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class CreateRecipesTable extends Migration
      */
     public function up()
     {
-        Schema::create('recipes', function (Blueprint $table) {
+        Schema::create('shopping_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
             $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('duration');
-            $table->string('image')->default('default.png');
-            $table->text('body');
-            $table->boolean('publish')->default(false);
-            $table->boolean('chef')->default(false);
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
+
+            $table->string('item');
+            $table->string('quantity')->nullable();
             $table->timestamps();
         });
     }
@@ -37,6 +34,6 @@ class CreateRecipesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recipes');
+        Schema::dropIfExists('shopping_lists');
     }
 }

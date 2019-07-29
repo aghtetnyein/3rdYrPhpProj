@@ -30,6 +30,8 @@
 
     <!-- Custom Css -->
     <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('../assets/author/css/nav.css') }}">
+    
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('assets/backend/css/themes/all-themes.css') }}" rel="stylesheet" />
@@ -100,6 +102,24 @@
                });
         @endforeach
     @endif
+</script>
+
+<script>
+
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() 
+    {
+    var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+        document.getElementById("cbb").style.bottom = "0px";
+      } else {
+        document.getElementById("navbar").style.top = "-63px";
+        document.getElementById("cbb").style.bottom = "0";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+
 </script>
 @stack('js')
 </body>

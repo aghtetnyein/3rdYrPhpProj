@@ -1,39 +1,207 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Satisfy&display=swap');
-
-/*@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Lily+Script+One|Pacifico|Satisfy&display=swap');*/
-
-
-
-body{
-  	font-family: 'Open Sans', sans-serif;
-  	margin:0;
-  	text-align: center;
-  	background: #FBFBF6;
+.grid {
+    position: relative;
+    margin: 0 auto;
+    padding: 1em 0 4em;
+    max-width: 1000px;
+    list-style: none;
+    text-align: center;
 }
 
-.brand{
-	font-family: Satisfy;
-	font-size: 28px;
-	font-weight: bold;
-	padding-left: 80px;
+/* Common style */
+.grid figure {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 3px;
+    min-width: 23%;
+    max-width: 24.3%;
+    max-height: 240px;
+    min-height: 240px;
+    width: 24.3%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.5em;
 }
 
-.right{
-	padding-right: 80px;
+.grid figure img {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0.95;
 }
 
+.grid figure figcaption {
+    padding: 2em;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+    pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+    z-index: 1000;
+    text-indent: 200%;
+    white-space: nowrap;
+    font-size: 0;
+    opacity: 0;
+}
+
+.grid figure h2 {
+    word-spacing: -0.15em;
+    font-weight: 300;
+}
+
+.grid figure h2 span {
+    font-weight: 800;
+}
+
+.grid figure h2,
+.grid figure p {
+    margin: 0;
+}
+
+.grid figure p {
+    letter-spacing: 1px;
+    font-size: 68.5%;
+    color: black;
+}
+
+
+
+figure.effect-sadie figcaption::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 208, 0, 0.7);
+    content: '';
+    opacity: 0;
+    color: black;
+    -webkit-transform: translate3d(0,50%,0);
+    transform: translate3d(0,50%,0);
+}
+
+figure.effect-sadie h2 {
+    position: absolute;
+    display: none;
+    top: 85%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    padding-top: 12%;
+    font-size: 25px;
+    color: white;
+    -webkit-transition: -webkit-transform 0.35s, color 0.35s;
+    transition: transform 0.35s, color 0.35s;
+    -webkit-transform: translate3d(0,-50%,0);
+    transform: translate3d(0,-50%,0);
+}
+
+figure.effect-sadie figcaption::before,
+figure.effect-sadie p {
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+}
+
+figure.effect-sadie p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2em;
+    width: 100%;
+    opacity: 0;
+    -webkit-transform: translate3d(0,10px,0);
+    transform: translate3d(0,10px,0);
+}
+
+figure.effect-sadie:hover h2 {
+    color: black;
+    top: 50%;
+    display: block;
+    -webkit-transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+    transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+}
+
+figure.effect-sadie:hover figcaption::before ,
+figure.effect-sadie:hover p {
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
 
 a{
-	color:black;
-	text-decoration: none;
+  color:black;
+      text-decoration: none;
+    }
+
+input:focus{
+  outline: none;
+}
+
+.cb {
+  
+  display: none;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0px;
+  text-align: center;
+  cursor: pointer;
+  transition: height 1s;
+  background-color: white;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25), 0 3px 5px 0 rgba(0, 0, 0, 0.20);
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 19px;
+}
+
+.icb{
+  width: 20%;
+  float: left;
+  height: 40px;
+  font-size: 19px;
+  line-height: 40px;
+}
+
+.icb a{
+  -webkit-transition: .2s;
+  transition: .2s;
+
+}
+
+.icb a:hover{
+  color:#FFA000;
+}
+.icb a.active{
+  color:#FFA000;
 }
 
 #navbar {
+  
   position: fixed;
   top: 0;
   width: 100%;
   display: block;
-  background-color:white;
+   background-color:white;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25), 0 3px 5px 0 rgba(0, 0, 0, 0.20);
   transition: top 0.3s;
 }
@@ -47,8 +215,9 @@ a{
   padding: 18px 18px;
   text-decoration: none;
   font-size: 19px;
-  -webkit-transition: .2s;
-  transition: .2s;
+  
+      -webkit-transition: .2s;
+      transition: .2s;
 }
 
 #navbar a:hover {
@@ -58,70 +227,284 @@ a{
   color:  #FFA000;
 }
 
+.content{
+  left: 0;
+  right: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:100%;
+  margin-top: 80px;
+  
+}
+.search{
+  margin-top: 20px;
+  width: 80%;
+  height: 50px;
+   background: #F5F5F5;
+  border-radius: 25px;
+    font-size:15px;
+  font-weight: bold;
+  padding-left: 30px;
+  border:none;
+   -webkit-transition: .2s;
+  transition:.2s;
 
-#container .box {
-  width:20vw;
-  height:150px;
-  display:inline-block;
-  position:relative;
 }
-#container .box > div {
-  width:100px;
-  height:100px;
-  font-size:50px;
-  color:#FFF;
-  position:absolute;
-  top:75%;
-  left:50%;
-  margin:-50px 0 0 -50px;
-  line-height:.7;
-  font-weight:bold;
+.search:focus{
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.14);
+  background-color: white;
 }
-#container {
-  overflow-y:scroll;
-  overflow-x:hidden;
-  transform: rotate(270deg) translateX(-100%);
-  transform-origin: top left;
-  background-color:#999;
-  position:absolute;
-  width:150px;
-  height:100vw;
-}
-#container2 {
-  transform: rotate(90deg) translateY(-100vh);
-  transform-origin: top left;
-  white-space:nowrap;
-  font-size:0;
+.search:hover{
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.14);
+  background-color: white;
 }
 
-.one {
-  background-color: #45CCFF;
-}
-.two {
-  background-color: #49E83E;
-}
-.three {
-  background-color: #EDDE05;
-}
-.four {
-  background-color: #E84B30;
+::placeholder {
+  color: grey;
+  opacity: 1;
+  font-size:15px;
+  font-weight: bold;
 }
 
 
-/* Translating the content's X ruines the scrollbar length. */
-/*
-#container {
-  overflow:scroll;
-  transform: rotate(90deg) translateY(-100%);
-  transform-origin: top left;
-  background-color:#999;
-  position:absolute;
-  width:100vh;
-  height:100vw;
+
+
+.button
+    {
+      background-color: white;
+      border: solid 1.5px #E0E0E0;
+      border-radius: 25px;
+      width: 100px;
+      height:40px;
+      margin-top: 30px;
+      -webkit-transition: .2s;
+      transition: .2s;
+      font-weight: bold;
+
+    }
+
+   .button:hover{
+      color:white;
+      background:  #FFA000;
+      border:none;
+   } 
+
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  padding-top: 3px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 15px;
 }
-#container2 {
-  transform: rotate(-90deg) translateX(-100vw);
-  transform-origin: top left;
-  white-space:nowrap;
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
 }
-*/
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #FFA000;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.radios{
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: left;
+  width: 30%;
+  margin-top: 30px;
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  }
+}
+  .cad {
+    flex: 0 0 auto;
+
+  }
+
+  .box{
+ background-color: white;
+ border-radius: 10px;
+ width: 200px;
+ height: 150px;
+ color: blue;
+ margin:10px;
+ box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.14);
+  }
+}
+
+.scrolling-wrapper-flexbox {
+ 
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+.category{
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.category .center{
+  position: absolute; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(68, 68, 68, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+  height: 150px;
+  padding: auto;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.category .center h3{
+  font-size: 16px;
+  padding-top: 65px;
+  font-weight: bold;
+}
+
+
+.category .center:hover {
+  transition: background 300ms ease-in-out;
+  /*background-color: #14CCCA;*/
+  background-color: rgba(255, 160, 0, 1);
+  color: black;
+}
+
+
+.frate{
+  color: white;
+  font-size: 15px;
+}
+
+.frate i{
+  font-size: 22px;
+}
+
+.love p{
+  font-weight: bold;
+}
+
+
+@media only screen and (max-width: 426px){
+    .grid figure {
+        position: relative;
+        float: left;
+        overflow: hidden;
+        margin: 10px 1%;
+        min-width: 97%;
+        max-width: 97%;
+        max-height: 300px;
+        min-height: 300px;
+        width: 48%;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 800px){
+    .grid figure {
+        position: relative;
+        float: left;
+        overflow: hidden;
+        margin: 10px 1%;
+        min-width: 48%;
+        max-width: 48%;
+        max-height: 300px;
+        min-height: 300px;
+        width: 48%;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+
+@media only screen and (max-width:900px) {
+
+.mobile{
+  display: none;
+}
+
+.cb{
+  display: block;
+}
+ .search{
+    width: 70%;
+    height: 40px;
+
+  }
+  .radios{
+    width: 70%;
+  }
+
+  .content{
+  padding-bottom: 100px;
+  }
+
+ }
+
+::-webkit-scrollbar {
+overflow: visible;
+  border-radius: 4px;
+  width: .4em;
+
+
+  }
+  ::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 0px;
+    background: white;
+    
+  }

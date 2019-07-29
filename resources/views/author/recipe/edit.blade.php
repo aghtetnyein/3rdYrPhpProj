@@ -17,27 +17,28 @@
   <div class="header pt-md-5" style="background: linear-gradient(87deg, #ffad00 0, #e37f36 100%) !important; display: block; height: 300px;">      
   <div class="container" style="padding-top: 10em;">
         <!-- Vertical Layout | With Floating Label -->
-        <form action="{{ route('author.recipe.store') }}" method="POST" enctype="multipart/form-data" style="text-align: left;">
+        <form action="{{ route('author.recipe.update', $recipe->id) }}" method="POST" enctype="multipart/form-data" style="text-align: left;">
             @csrf
+            @method('PUT')
             <div class="row clearfix">
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                               CREATE NEW RECIPE
+                                EDIT RECIPE
                             </h2>
                         </div>
                         <div class="body">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" id="title" class="form-control" name="title">
+                                        <input type="text" id="title" class="form-control" name="title" value="{{ $recipe->title }}">
                                         <label class="form-label">Recipe Name</label>
                                     </div>
                                 </div>
 
                                 <div class="form-group form-float" style="margin-bottom: 4em;">
                                     <div class="form-line">
-                                        <input type="text" id="duration" class="form-control" name="duration">
+                                        <input type="text" id="duration" class="form-control" name="duration" value="{{ $recipe->duration }}">
                                         <label class="form-label">Duration</label>
                                     </div>
                                 </div>
@@ -80,37 +81,41 @@
                               <div class="form-line {{ $errors->has('categories') ? 'focused error' : '' }}">
                                   <label for="category">Select Category</label>
                                   <select name="categories[]" id="category" class="form-control show-tick" data-live-search="true" multiple>
-                                      @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                      @endforeach
+                                    @foreach($categories as $category)
+                                          <option 
+                                          @foreach ( $recipe->categories as $recipeCategory )
+                                            {{ $recipeCategory->id == $category->id ? 'selected' : '' }}
+                                          @endforeach
+                                          value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                   </select>
                               </div>
                           </div>
 
                           <div class="form-group form-float">
                               <div class="form-line">
-                                  <input type="text" id="tag" class="form-control" name="tags">
+                                  <input type="text" id="tag" class="form-control" name="tags" style="font-weight: bold;" value="@foreach ($tags as $tag)#{{ $tag->name }}@endforeach">
                                   <label class="form-label">Tags</label>
                               </div>
                           </div>
 
                           <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group" style="margin-bottom: 0;">
-                                    <input type="checkbox" id="publish" class="filled-in" name="publish" value="publish">
+                                    <input type="checkbox" id="publish" class="filled-in" name="publish" value="1" {{ $recipe->publish == true ? 'checked' : '' }}>
                                     <label for="publish">Publish</label>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group" style="margin-bottom: 0;">
-                                    <input type="checkbox" id="chef" class="filled-in" name="chef" value="chef">
+                                    <input type="checkbox" id="chef" class="filled-in" name="chef" value="1" {{ $recipe->chef == true ? 'checked' : '' }}>
                                     <label for="chef">Chef</label>
                                 </div>
                             </div>
                           </div>
 
-                          <a class="btn btn-danger waves-effect" href="{{ URL::previous() }}">Back</a>
-                          <button type="submit" class="btn btn-warning waves-effect">Save</button>
+                          <a class="btn btn-danger waves-effect" href="/author/recipe/{{$recipe->id}}">Back</a>
+                          <button type="submit" class="btn btn-warning waves-effect">Update</button>
 
                       </div>
                   </div>
@@ -125,7 +130,7 @@
                             </h2>
                         </div>
                         <div class="body">
-                            <textarea id="tinymce" name="body"></textarea>
+                            <textarea id="tinymce" name="body">{{ $recipe->body }}</textarea>
                         </div>
                     </div>
                 </div>

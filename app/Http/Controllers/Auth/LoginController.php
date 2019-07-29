@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Recipe;
+use App\Save;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -36,6 +39,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+
         if ( Auth::check() && Auth::user()->role->id == 1 )
         {
             $this->redirectTo = route('admin.dashboard');

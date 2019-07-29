@@ -20,7 +20,7 @@
     @method('PATCH')
 
       <div class="topsection">
-        <img src="images/avatar1.png" alt="Avatar" class="pimage">
+        <img src="{{ Storage::disk('public')->url('/profile/'.$user->profile->image) }}" alt="Avatar" class="pimage">
       </div>  
 
       <div class="field">
@@ -40,42 +40,6 @@
               </span>
           @enderror
       </div>  
-
-      <div class="field">
-          <p class="fname">Title</p>
-
-          <input id="title"
-                 type="text"
-                 name="title"
-                 class="input @error('title') is-invalid @enderror"
-                 value="{{ old('title') ?? $user->profile->title }}"
-                 autocomplete="title"
-                 autofocus>
-
-          @error('title')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-          @enderror
-      </div>
-
-      <div class="field">
-          <p class="fname">Description</p>
-
-          <input id="description"
-                 type="text"
-                 name="description"
-                 class="input @error('description') is-invalid @enderror"
-                 value="{{ old('description') ?? $user->profile->description }}"
-                 autocomplete="description"
-                 autofocus>
-
-          @error('description')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-          @enderror
-      </div>
 
       <div class="field">
           <p class="fname">URL</p>
@@ -122,7 +86,7 @@
           @enderror
       </div> 
 
-      <div style="margin-top: 20px;">
+      <div style="margin-top: 20px; display: block; text-align: center;">
         <button class="btn button">Back</button>
         <button class="btn button">Save Profile</button>
       </div>

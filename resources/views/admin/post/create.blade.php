@@ -13,7 +13,7 @@
         <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
@@ -52,6 +52,29 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                  <div class="card">
+                      <div class="header">
+                          <h2>
+                              CATEGORIES AND TAGS
+                          </h2>
+                      </div>
+                      <div class="body">
+                          <div class="form-group form-float">
+                              <div class="form-line {{ $errors->has('categories') ? 'focused error' : '' }}">
+                                  <label for="category">Select Category</label>
+                                  <select name="categories[]" id="category" class="form-control show-tick" data-live-search="true" multiple>
+                                      <option value="">HAHA</option>
+                                      <option value="">muya</option>
+                                      <option value="">HAHA</option>
+                                  </select>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
             </div>
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

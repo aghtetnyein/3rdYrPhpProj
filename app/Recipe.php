@@ -16,4 +16,19 @@ class Recipe extends Model
     {
         return $this->belongsToMany('App\Category')->withTimestamps();
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
+
+    public function saves()
+    {
+        return $this->hasMany('App\Save');
+    }
 }
